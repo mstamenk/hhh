@@ -1,0 +1,12 @@
+executable              = spanet_train.sh
+RequestMemory = 7999
+arguments               = $(ClusterId)$(ProcId)
+output                  = spanet_train.$(ClusterId).$(ProcId).out
+error                   = spanet_train.$(ClusterId).$(ProcId).err
+log                     = spanet_train.$(ClusterId).log
+when_to_transfer_output = ON_EXIT
+transfer_output_files   = spanet_output
+request_GPUs = 1
+request_CPUs = 1
++JobFlavour = "tomorrow"
+queue
