@@ -1,0 +1,164 @@
+# ---------------------------------------------------
+# REQUIRED - INPUTS - List all inputs to SPANet here.
+# ---------------------------------------------------
+INPUTS:
+  # -----------------------------------------------------------------------------
+  # REQUIRED - SEQUENTIAL - inputs which can have an arbitrary number of vectors.
+  # -----------------------------------------------------------------------------
+  SEQUENTIAL:
+    Jets:
+      pt: none
+      eta: normalize
+      sinphi: none
+      cosphi: none
+      btag: none
+      invmass: log_normalize
+    BoostedJets:
+      fj_pt: log_normalize
+      fj_eta: normalize
+      fj_sinphi: none
+      fj_cosphi: none
+      fj_xbb: none
+      fj_xqq: none
+      fj_qcd: none
+      fj_mass: normalize
+    Leptons:
+      lep_pt: log_normalize
+      lep_eta: normalize
+      lep_sinphi: none
+      lep_cosphi: none
+    Taus:
+      tau_pt: log_normalize
+      tau_eta: normalize
+      tau_sinphi: none
+      tau_cosphi: none
+    Jet1:
+      mass1: log_normalize
+      pt1: log_normalize
+      eta1: normalize
+      sinphi1: none
+      cosphi1: none
+      dr1: none
+    Jet2:
+      mass2: log_normalize
+      pt2: log_normalize
+      eta2: normalize
+      sinphi2: none
+      cosphi2: none
+      dr2: none
+    Jet3:
+      mass3: log_normalize
+      pt3: log_normalize
+      eta3: normalize
+      sinphi3: none
+      cosphi3: none
+      dr3: none
+    Jet4:
+      mass4: log_normalize
+      pt4: log_normalize
+      eta4: normalize
+      sinphi4: none
+      cosphi4: none
+      dr4: none
+    Jet5:
+      mass5: log_normalize
+      pt5: log_normalize
+      eta5: normalize
+      sinphi5: none
+      cosphi5: none
+      dr5: none
+    Jet6:
+      mass6: log_normalize
+      pt6: log_normalize
+      eta6: normalize
+      sinphi6: none
+      cosphi6: none
+      dr6: none
+    Jet7:
+      mass7: log_normalize
+      pt7: log_normalize
+      eta7: normalize
+      sinphi7: none
+      cosphi7: none
+      dr7: none
+    Jet8:
+      mass8: log_normalize
+      pt8: log_normalize
+      eta8: normalize
+      sinphi8: none
+      cosphi8: none
+      dr8: none
+    Jet9:
+      mass9: log_normalize
+      pt9: log_normalize
+      eta9: normalize
+      sinphi9: none
+      cosphi9: none
+      dr9: none
+
+
+  # ---------------------------------------------------------------------
+  # REQUIRED - GLOBAL - inputs which will have a single vector per event.
+  # ---------------------------------------------------------------------
+  GLOBAL:
+    MET:
+      met: log_normalize
+    HT: 
+      ht: log_normalize
+
+
+# ----------------------------------------------------------------------
+# REQUIRED - EVENT - Complete list of resonance particles and daughters.
+# ----------------------------------------------------------------------
+EVENT:
+  h1:
+    - b1: Jets
+    - b2: Jets
+  h2:
+    - b1: Jets
+    - b2: Jets
+  h3:
+    - b1: Jets
+    - b2: Jets
+  bh1:
+    - bb: BoostedJets
+  bh2:
+    - bb: BoostedJets
+  bh3:
+    - bb: BoostedJets
+
+# ---------------------------------------------------------
+# REQUIRED KEY - PERMUTATIONS - List of valid permutations.
+# ---------------------------------------------------------
+PERMUTATIONS:
+    EVENT:
+      - [[h1, h2], [bh1, bh2]]
+      - [[h1, h3], [bh1, bh3]]
+      - [[h2, h3], [bh2, bh3]]
+    h1:
+      - [ b1, b2 ]
+    h2:
+      - [ b1, b2 ]
+    h3:
+      - [ b1, b2 ]
+    bh1: 
+      - [ bb ]
+    bh2: 
+      - [ bb ]
+    bh3:
+      - [ bb ]
+
+
+
+# ------------------------------------------------------------------------------
+# REQUIRED - REGRESSIONS - List of desired features to regress from observables.
+# ------------------------------------------------------------------------------
+REGRESSIONS:
+
+
+# -----------------------------------------------------------------------------
+# REQUIRED - REGRESSIONS - List of desired classes to predict from observables.
+# -----------------------------------------------------------------------------
+CLASSIFICATIONS:
+    EVENT:
+        - categorisation
